@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Connexion</h1>
+        <form action="" method="POST" novalidate>
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input type="text" name="login" id="login" class="{% if errors.login is not defined and data.login is not empty %}form-control is-valid{% elseif errors.login is defined%}form-control is-invalid{% else %}form-control{% endif %}" {% if data.login is defined %} value={{data.login}} {% endif %}>
+                {% if errors.login is defined %}
+                    <div class="invalid-feedback">
+                        {{ errors.login }}
+                    </div>
+                {% elseif errors.login is not defined and data.login is not empty %}
+                    <div class="valid-feedback">    
+                        All is good    
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="{% if errors.password is not defined and data.password is not empty %}form-control is-valid{% elseif errors.password is defined%}form-control is-invalid{% else %}form-control{% endif %}" {% if data.password is defined %} value={{data.password}} {% endif %}>
+                {% if errors.password is defined %}
+                    <div class="invalid-feedback">
+                        {{ errors.password }}
+                    </div>
+                {% elseif errors.password is not defined and data.password is not empty %}
+                    <div class="valid-feedback">    
+                        All is good    
+                    </div>
+                {% endif %}
+            </div>
+            
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+    </div>
+    
+</body>
+</html>
